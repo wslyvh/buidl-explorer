@@ -1,17 +1,17 @@
 {
   "name": "buidl-explorer",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@types/jest": "23.3.9",
-    "@types/node": "10.12.9",
-    "@types/react": "16.7.6",
-    "@types/react-dom": "16.0.9",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1",
-    "typescript": "3.1.6"
+  "description": "Join the #BUIDL movement and contribute to open-source Ethereum projects",
+  "author": "wslyvh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wslyvh/buidl-explorer.git"
   },
+  "bugs": {
+    "url": "https://github.com/wslyvh/buidl-explorer/issues"
+  },
+  "homepage": "https://github.com/wslyvh/buidl-explorer#readme",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -20,6 +20,18 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-scripts": "2.1.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.12.9",
+    "@types/react": "^16.7.6",
+    "@types/react-dom": "^16.0.9",
+    "typescript": "^3.1.6"
   },
   "browserslist": [
     ">0.2%",
