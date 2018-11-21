@@ -1,0 +1,25 @@
+{
+  "name": "buidl-explorer",
+  "version": "0.1.0",
+  "description": "Join the #BUIDL movement and contribute to open-source Ethereum projects",
+  "author": "wslyvh",
+  "license": "MIT",
+  "keywords": [
+    "ethereum"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wslyvh/buidl-explorer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wslyvh/buidl-explorer/issues"
+  },
+  "homepage": "https://github.com/wslyvh/buidl-explorer#readme",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
