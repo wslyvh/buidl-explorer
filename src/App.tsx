@@ -6,10 +6,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <p>
-            <b>#BUIDL</b> explorer
-          </p>
+          <h1 className="App-title">#BUIDL Explorer</h1>
         </header>
+        <p className="App-intro">
+          Join the #BUIDL movement and contribute to open-source Ethereum projects
+        </p>
       </div>
     );
   }
