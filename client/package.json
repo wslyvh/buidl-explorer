@@ -16,18 +16,29 @@
   },
   "homepage": "https://github.com/wslyvh/buidl-explorer#readme",
   "scripts": {
-    "start": "node index.js",
-    "client": "cd client && npm start",
-    "server": "nodemon index.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "lint-fix": "tslint --fix -c tslint.json -p tsconfig.json"
+  },
+  "proxy": "http://localhost:5000/",
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-scripts": "2.1.1"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.12.9",
+    "@types/react": "^16.7.6",
+    "@types/react-dom": "^16.0.9",
     "concurrently": "^4.1.0",
+    "tslint": "^5.11.0",
     "typescript": "^3.1.6"
   }
 }
