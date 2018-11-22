@@ -20,7 +20,7 @@
     "client": "cd client && npm run start",
     "server": "nodemon index.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "cd client && npm install && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
     "test": "cd client && npm run test",
     "lint": "tslint -c client/tslint.json -p client/tsconfig.json",
     "lint-fix": "tslint --fix -c client/tslint.json -p client/tsconfig.json"
