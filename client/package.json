@@ -18,10 +18,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "tslint -c tslint.json -p tsconfig.json",
-    "lint-fix": "tslint --fix -c tslint.json -p tsconfig.json"
+    "test": "react-scripts test --coverage --verbose --detectOpenHandles --forceExit",
+    "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:5000/",
   "eslintConfig": {
@@ -40,5 +38,11 @@
     "concurrently": "^4.1.0",
     "tslint": "^5.11.0",
     "typescript": "^3.1.6"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

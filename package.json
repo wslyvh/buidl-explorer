@@ -17,10 +17,13 @@
   "homepage": "https://github.com/wslyvh/buidl-explorer#readme",
   "scripts": {
     "start": "node index.js",
-    "client": "cd client && npm start",
+    "client": "cd client && npm run start",
     "server": "nodemon index.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "test": "cd client && npm run test",
+    "lint": "tslint -c client/tslint.json -p client/tsconfig.json",
+    "lint-fix": "tslint --fix -c client/tslint.json -p client/tsconfig.json"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
