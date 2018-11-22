@@ -10,6 +10,7 @@ cache:
   - node_modules
 before_install:
 - npm update
+- cd project
 install:
 - npm install
 - npm install codecov -g
