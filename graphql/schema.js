@@ -1,8 +1,6 @@
 const { gql } = require('apollo-server-express');
+const { client, repoQuery } = require('./githubclient'); 
 
-const { repositories } = require('./data'); // Mocked data
-
-// Construct a schema, using GraphQL schema language 
 const typeDefs = gql`
   type Query {
     repositories: [Repository]
@@ -13,8 +11,12 @@ const typeDefs = gql`
     name: String!
     description: String!
     url: String!
-    stargazersCount: Int!
+    stargazers: Stargazers!
     owner: Owner!
+  }
+
+  type Stargazers {
+    totalCount: Int!
   }
 
   type Owner {
@@ -28,7 +30,10 @@ const typeDefs = gql`
 // Provide resolver functions for your schema fields  
 const resolvers = {
   Query: {
-    repositories: () => { return repositories; }
+    async repositories () { 
+      var response = await client.post("graphql", { query: repoQuery });
+      return response.data.data.search.nodes; 
+    }
   },
 };
 

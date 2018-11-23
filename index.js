@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 apolloServer.applyMiddleware({ app, path: '/graphql' });
 
-const { repositories, issues } = require('./graphql/data'); // Mocked data
+const { repositories, issues } = require('./mocks'); // Mocked data
 
 // API calls
 app.get('/api/repos', (req, res) => {

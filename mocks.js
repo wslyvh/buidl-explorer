@@ -4,7 +4,10 @@ const repositories = [
       "name": "go-ethereum",
       "description": "Official Go implementation of the Ethereum protocol",
       "url": "https://github.com/ethereum/go-ethereum",
-      "stargazersCount": 21810,
+      "stargazers":
+      {
+        "totalCount": 21810,
+      },
       "owner": {
         "id": "MDEyOk9yZ2FuaXphdGlvbjYyNTA3NTQ=",
         "login": "ethereum",
@@ -17,7 +20,10 @@ const repositories = [
       "name": "openzeppelin-solidity",
       "description": "OpenZeppelin is a library for secure smart contract development",
       "url": "https://github.com/OpenZeppelin/openzeppelin-solidity",
-      "stargazersCount": 6382,
+      "stargazers":
+      {
+        "totalCount": 6382,
+      },
       "owner": {
         "id": "MDEyOk9yZ2FuaXphdGlvbjIwODIwNjc2",
         "login": "OpenZeppelin",
@@ -30,7 +36,10 @@ const repositories = [
       "name": "solidity",
       "description": "Solidity, the Contract-Oriented Programming Language",
       "url": "https://github.com/ethereum/solidity",
-      "stargazersCount": 6348,
+      "stargazers":
+      {
+        "totalCount": 6348,
+      },
       "owner": {
         "id": "MDEyOk9yZ2FuaXphdGlvbjYyNTA3NTQ=",
         "login": "ethereum",
@@ -43,7 +52,10 @@ const repositories = [
       "name": "aleth",
       "description": "Aleth – Ethereum C++ client, tools and libraries",
       "url": "https://github.com/ethereum/aleth",
-      "stargazersCount": 3441,
+      "stargazers":
+      {
+        "totalCount": 3441,
+      },
       "owner": {
         "id": "MDEyOk9yZ2FuaXphdGlvbjYyNTA3NTQ=",
         "login": "ethereum",
@@ -56,7 +68,10 @@ const repositories = [
     "name": "metamask-extension",
     "description": "The MetaMask browser extension, enables browsing Ethereum blockchain enabled websites.",
     "url": "https://github.com/MetaMask/metamask-extension",
-    "stargazersCount": 2827,
+    "stargazers":
+    {
+      "totalCount": 2827,
+    },
     "owner": {
         "id": "MDEyOk9yZ2FuaXphdGlvbjExNzQ0NTg2",
         "login": "MetaMask",

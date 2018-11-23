@@ -26,11 +26,14 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.2.2",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "graphql": "^14.0.2"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "concurrently": "^4.1.0",
     "tslint": "^5.11.0",
     "typescript": "^3.1.6"
