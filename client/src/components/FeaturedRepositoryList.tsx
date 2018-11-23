@@ -1,4 +1,4 @@
-import { List, Row } from "antd";
+import { Divider, List } from "antd";
 import React, { Component } from "react";
 import RepositoryCard from "./RepositoryCard";
 
@@ -26,19 +26,18 @@ class FeaturedRepositoryList extends Component {
 
   public render() {
     return (
-        <Row>
-            <h2>Featured Repositories</h2>
+        <div style={{textAlign: "center"}}>
+            <Divider><h2>Featured Repositories</h2></Divider>
 
-            <div>
-                <List grid={{ gutter: 24, column: 4 }}
-                    dataSource={this.state.repos} renderItem={(repo: any) => (
-                        <List.Item>
-                            <RepositoryCard repository={repo} />
-                        </List.Item>
-                    )}
-                />
-            </div>
-        </Row>
+            <List
+                grid={{ gutter: 16, xs: 1, sm: 1, md: 2, lg: 2, xl: 3, xxl: 4}}
+                dataSource={this.state.repos} renderItem={(repo: any) => (
+                    <List.Item>
+                        <RepositoryCard repository={repo} />
+                    </List.Item>
+                )}
+            />
+        </div>
     );
   }
 }

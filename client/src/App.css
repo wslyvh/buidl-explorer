@@ -5,24 +5,34 @@
 }
 
 .header { 
-  padding: 25px;
-  min-height: 200px;
+  min-height: 300px;
+  padding: 60px 0;
   color: white;
 }
 
-h1 {
+.header h1 {
   font-size: 2em;
   color: white;
 }
 
+.header p { 
+  font-size: 1.2em;
+  line-height: normal;
+}
+
 /* Featured Repository */
-.featured-repository {
+.featured-repository-row {
+  background-color: #fff;
+  justify-content: center;
+  padding: 20px 0 50px 0;
+  text-align: center;
+}
+
+.repository-card {
   font-family: 'Roboto', Arial, sans-serif;
   position: relative;
   overflow: hidden;
-  margin: 10px;
-  min-width: 250px;
-  max-width: 310px;
+  min-height: 300px;
   width: 100%;
   background-color: #ffffff;
   border-radius: 5px;
@@ -33,19 +43,23 @@ h1 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
 }
 
-.featured-repository *,
-.featured-repository *:before {
+.repository-card:hover {
+  border-top: 5px solid #40a9ff;
+}
+
+.repository-card *,
+.repository-card *:before {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: all 0.1s ease-out;
   transition: all 0.1s ease-out;
 }
 
-.featured-repository a {
+.repository-card a {
   color: #999;
 }
 
-.featured-repository .avatar {
+.repository-card .avatar {
   color: #fff;
   width: 80px;
   margin-top: 15px;
@@ -54,21 +68,21 @@ h1 {
   display: inline-block;
 }
 
-.featured-repository h3 {
+.repository-card h3 {
   color: #3c3c3c;
   font-size: 20px;
   font-weight: 300;
   line-height: 24px;
 }
 
-.featured-repository p {
+.repository-card p {
   font-size: 0.9em;
   font-weight: 300;
   padding: 15px;
   margin-bottom: 30px;
 }
 
-.featured-repository footer {
+.repository-card footer {
   padding: 0 25px;
   color: #666;
   font-size: 0.8em;
@@ -80,12 +94,12 @@ h1 {
   width: 100%;
 }
 
-.featured-repository footer > div {
+.repository-card footer > div {
   display: inline-block;
   margin-right: 15px;
 }
 
-.featured-repository footer i {
+.repository-card footer i {
   margin-right: 5px;
   font-size: 1.2em;
 }

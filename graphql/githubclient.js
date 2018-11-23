@@ -13,7 +13,7 @@ const client = axios.create({
 });
 
 const featuredRepoQuery = `{
-  search(first: 4, query: "topic:Ethereum good-first-issues:>1 stars:>20", type: REPOSITORY) {
+  search(first: 8, query: "topic:Ethereum good-first-issues:>1 stars:>20", type: REPOSITORY) {
     repositoryCount
     pageInfo {
       startCursor
