@@ -12,8 +12,8 @@ const client = axios.create({
   },
 });
 
-const repoQuery = `{
-  search(first: 5, query: "topic:Ethereum good-first-issues:>1 stars:>20", type: REPOSITORY) {
+const featuredRepoQuery = `{
+  search(first: 4, query: "topic:Ethereum good-first-issues:>1 stars:>20", type: REPOSITORY) {
     repositoryCount
     pageInfo {
       startCursor
@@ -42,4 +42,4 @@ fragment Repository on Repository {
   }
 }`
 
-module.exports = { client, repoQuery };
+module.exports = { client, featuredRepoQuery };

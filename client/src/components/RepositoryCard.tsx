@@ -18,7 +18,7 @@ const RepositoryCard: React.SFC<IRepositoryProps> = (props) => {
               description={props.repository.description} />
       </a>
       <br/>
-      <Icon type="star" theme="twoTone" twoToneColor="#fdd835" /> {props.repository.stargazersCount}
+      <Icon type="star" theme="twoTone" twoToneColor="#fdd835" /> {props.repository.stargazers.totalCount}
     </Card>
   );
 };

@@ -18,6 +18,10 @@ export interface IRepository {
   name: string;
   description: string;
   url: string;
-  stargazersCount: number;
+  stargazers: IStargazers;
   owner: IUser;
+}
+
+export interface IStargazers {
+  totalCount: number;
 }

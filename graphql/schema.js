@@ -1,5 +1,5 @@
 const { gql } = require('apollo-server-express');
-const { client, repoQuery } = require('./githubclient'); 
+const { client, featuredRepoQuery } = require('./githubclient'); 
 
 const typeDefs = gql`
   type Query {
@@ -31,10 +31,15 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     async repositories () { 
-      var response = await client.post("graphql", { query: repoQuery });
-      return response.data.data.search.nodes; 
+      return getRepositories();
     }
   },
 };
 
-module.exports = { typeDefs, resolvers };
+const getRepositories = async () => {
+    
+  var response = await client.post("graphql", { query: featuredRepoQuery });
+  return response.data.data.search.nodes; 
+};
+
+module.exports = { typeDefs, resolvers, getRepositories };
