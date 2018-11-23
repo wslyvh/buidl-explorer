@@ -4,10 +4,20 @@
   text-align: center;
 }
 
-.header { 
-  min-height: 300px;
-  padding: 60px 0;
-  color: white;
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+  .header { 
+    min-height: 360px;
+    padding: 30px;
+    color: white;
+  }
+}
+@media (min-width: 767px) { 
+  .header { 
+    min-height: 300px;
+    padding: 60px 30px;
+    color: white;
+  }
 }
 
 .header h1 {
