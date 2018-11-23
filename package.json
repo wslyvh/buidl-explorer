@@ -25,8 +25,10 @@
     "lint": "cd client && npm run lint"
   },
   "dependencies": {
+    "apollo-server-express": "^2.2.2",
     "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "graphql": "^14.0.2"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
