@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import FeaturedRepositoryList from "./components/FeaturedRepositoryList";
 
 import "./App.css";
-import IssueList from "./components/IssueList";
 
 const { Header, Content } = Layout;
 
