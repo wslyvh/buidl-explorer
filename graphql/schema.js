@@ -1,20 +1,35 @@
-const { ApolloServer, gql } = require('apollo-server-express');
+const { gql } = require('apollo-server-express');
 
-// Construct a schema, using GraphQL schema language // Import 
+const { repositories } = require('./data'); // Mocked data
+
+// Construct a schema, using GraphQL schema language 
 const typeDefs = gql`
   type Query {
-    hello: String
+    repositories: [Repository]
+  }
+
+  type Repository  {
+    id: String!
+    name: String!
+    description: String!
+    url: String!
+    stargazersCount: Int!
+    owner: Owner!
+  }
+
+  type Owner {
+    id: String!
+    login: String!
+    url: String!
+    avatarUrl: String!
   }
 `;
 
-// Provide resolver functions for your schema fields // Import 
+// Provide resolver functions for your schema fields  
 const resolvers = {
   Query: {
-    hello: () => 'Hello world...',
+    repositories: () => { return repositories; }
   },
 };
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
-module.exports = {
-  apolloServer,
-};
+module.exports = { typeDefs, resolvers };
