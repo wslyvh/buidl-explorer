@@ -12,8 +12,7 @@ const client = axios.create({
   },
 });
 
-const featuredRepoQuery = `{
-  search(first: 8, query: "topic:Ethereum good-first-issues:>1 stars:>20", type: REPOSITORY) {
+const genericQuery = `
     repositoryCount
     pageInfo {
       startCursor
@@ -40,6 +39,40 @@ fragment Repository on Repository {
     avatarUrl
     url
   }
+}`;
+
+const searchLatestQuery = `{
+  search(first: 4, query: "topic:Ethereum good-first-issues:>1 sort:stars-desc archived:false is:public", type: REPOSITORY) {` +
+  genericQuery;
+
+const searchFeaturedQuery = `{
+  search(first: 4, query: "topic:Ethereum good-first-issues:>1 stars:5..50 sort:updated-desc archived:false is:public", type: REPOSITORY) {` +
+  genericQuery;
+
+const searchIssueQuery = `{
+  search(first: 10, query: "topic:Ethereum good-first-issues:>1 stars:5..50", type: REPOSITORY) {
+    repositoryCount
+    nodes {
+      ... on Repository {
+        issues(first: 5, labels: ["first-timers-only", "good first issue", "up-for-grabs"], states: OPEN, orderBy: {field: UPDATED_AT, direction: DESC}) {
+          totalCount
+          nodes {
+            number
+            title
+            url
+            state
+            author {
+              avatarUrl
+              login
+              url
+            }
+            createdAt
+            updatedAt
+          }
+        }
+      }
+    }
+  }
 }`
 
-module.exports = { client, featuredRepoQuery };
+module.exports = { client, searchLatestQuery, searchFeaturedQuery, searchIssueQuery };

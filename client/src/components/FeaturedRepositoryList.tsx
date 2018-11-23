@@ -15,7 +15,7 @@ class FeaturedRepositoryList extends Component {
   }
 
   public callBackendAPI = async () => {
-    const response = await fetch("/api/repositories");
+    const response = await fetch("/api/repositories/featured");
     const body = await response.json();
 
     if (response.status !== 200) {

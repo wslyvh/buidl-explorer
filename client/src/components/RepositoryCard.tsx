@@ -1,9 +1,7 @@
-import { Card, Icon } from "antd";
+import { Icon } from "antd";
 import React from "react";
 import { Emojione } from "react-emoji-render";
 import { IRepository } from "../types";
-
-const { Meta } = Card;
 
 interface IRepositoryProps {
   repository: IRepository;

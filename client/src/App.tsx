@@ -1,11 +1,13 @@
 
-import { Col, Layout, Row } from "antd";
+import { Col, Layout, Row} from "antd";
 import React, { Component } from "react";
+import AppFooter from "./components/AppFooter";
 import FeaturedRepositoryList from "./components/FeaturedRepositoryList";
+import IssueList from "./components/IssueList";
 
 import "./App.css";
 
-const { Header, Content } = Layout;
+const { Content, Footer, Header } = Layout;
 
 class App extends Component {
 
@@ -29,8 +31,16 @@ class App extends Component {
               <FeaturedRepositoryList />
             </Col>
           </Row>
+          <Row type="flex" className="newcomer-issues-row">
+            <Col span={16}>
+              <IssueList />
+            </Col>
+          </Row>
         </Content>
 
+        <Footer>
+          <AppFooter/>
+        </Footer>
       </Layout>
     );
   }

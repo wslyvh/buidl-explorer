@@ -3,8 +3,7 @@ const cors = require('cors');
 const express = require('express');
 const path = require('path');
 const { apolloServer } = require('./graphql/server');
-const { getRepositories } = require('./graphql/schema');
-const { issues } = require('./mocks'); // Mocked data
+const { getLatestRepositories, getFeaturedRepositories, getIssues } = require('./graphql/schema');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,13 +15,19 @@ app.use(cors());
 apolloServer.applyMiddleware({ app, path: '/graphql' });
 
 // API calls
-app.get('/api/repositories', async (req, res) => {
-  var response = await getRepositories();
-  res.json(response);
+app.get('/api/repositories/latest', async (req, res) => {
+  var repositories = await getLatestRepositories();
+  res.json(repositories);
+});
+
+app.get('/api/repositories/featured', async (req, res) => {
+  var repositories = await getFeaturedRepositories();
+  res.json(repositories);
 });
 
 app.get('/api/issues', async (req, res) => {
-    res.json(issues);
+  var issues = await getIssues();
+  res.json(issues);
 });
 
 if (process.env.NODE_ENV === 'production') {

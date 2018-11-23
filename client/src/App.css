@@ -31,10 +31,11 @@
 }
 
 /* Featured Repository */
-.featured-repository-row {
+.featured-repository-row,
+.newcomer-issues-row {
   background-color: #fff;
   justify-content: center;
-  padding: 20px 0 50px 0;
+  padding: 20px 0;
   text-align: center;
 }
 
@@ -113,4 +114,13 @@
 .repository-card footer i {
   margin-right: 5px;
   font-size: 1.2em;
+}
+
+/* Footer */
+.footer-icons {
+  font-size: 24px;
+}
+.footer-icons a {
+  color: #666;
+  padding: 0 10px;
 }
