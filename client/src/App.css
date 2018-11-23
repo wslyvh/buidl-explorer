@@ -1,17 +1,16 @@
+@import '~antd/dist/antd.css';
+
 .App {
   text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
+.header { 
+  padding: 25px;
+  min-height: 200px;
   color: white;
 }
 
-.App-title {
+h1 {
   font-size: 2em;
-}
-
-.App-intro {
-  font-size: large;
+  color: white;
 }

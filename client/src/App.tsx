@@ -1,39 +1,26 @@
+
+import { Layout } from "antd";
 import React, { Component } from "react";
+import FeaturedRepositoryList from "./components/FeaturedRepositoryList";
+
 import "./App.css";
 
+const { Header, Content } = Layout;
+
 class App extends Component {
-  public state = {
-    data: null,
-  };
-
-  public componentDidMount() {
-
-    this.callBackendAPI()
-      .then((result) => this.setState({ data: result }))
-      .catch((error) => console.log(error));
-  }
-
-  public callBackendAPI = async () => {
-    const response = await fetch("/api/issues");
-    const body = await response.json();
-
-    if (response.status !== 200) {
-      throw Error(body.message);
-    }
-    return body;
-  }
 
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">#BUIDL Explorer</h1>
-        </header>
-        <p className="App-intro">
-          Join the #BUIDL movement and contribute to open-source Ethereum projects
-        </p>
-        <p className="App-content">{this.state.data}</p>
-      </div>
+      <Layout className="App">
+        <Header className="header">
+          <h1>#BUIDL Explorer</h1>
+          <p>Join the #BUIDL movement and contribute to open-source Ethereum projects.</p>
+        </Header>
+
+        <Content style={{ background: "#fff", padding: 24, margin: 0, minHeight: 200 }}>
+          <FeaturedRepositoryList />
+        </Content>
+      </Layout>
     );
   }
 }

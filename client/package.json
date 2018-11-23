@@ -28,6 +28,7 @@
     "extends": "react-app"
   },
   "dependencies": {
+    "antd": "^3.10.8",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1"
