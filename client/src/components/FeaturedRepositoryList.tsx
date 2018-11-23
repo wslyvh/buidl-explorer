@@ -1,4 +1,4 @@
-import { List } from "antd";
+import { List, Row } from "antd";
 import React, { Component } from "react";
 import RepositoryCard from "./RepositoryCard";
 
@@ -26,10 +26,10 @@ class FeaturedRepositoryList extends Component {
 
   public render() {
     return (
-        <div>
+        <Row>
             <h2>Featured Repositories</h2>
 
-            <div style={{ background: "#ECECEC", padding: "30px" }}>
+            <div>
                 <List grid={{ gutter: 24, column: 4 }}
                     dataSource={this.state.repos} renderItem={(repo: any) => (
                         <List.Item>
@@ -38,7 +38,7 @@ class FeaturedRepositoryList extends Component {
                     )}
                 />
             </div>
-        </div>
+        </Row>
     );
   }
 }

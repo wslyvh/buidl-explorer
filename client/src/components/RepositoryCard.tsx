@@ -1,4 +1,4 @@
-import { Avatar, Card, Icon } from "antd";
+import { Card, Icon } from "antd";
 import React from "react";
 import { IRepository } from "../types";
 
@@ -10,16 +10,16 @@ interface IRepositoryProps {
 
 const RepositoryCard: React.SFC<IRepositoryProps> = (props) => {
   return (
-    <Card style={{ marginTop: 16, textAlign: "right" }}>
+    <div className="featured-repository">
       <a href={props.repository.url} target="_blank">
-          <Meta style={{ textAlign: "left" }}
-              avatar={<Avatar src={props.repository.owner.avatarUrl} />}
-              title={props.repository.name}
-              description={props.repository.description} />
+        <img className="avatar" src={props.repository.owner.avatarUrl} alt={props.repository.name} />
+        <h3>{props.repository.name}</h3>
+        <p>{props.repository.description}</p>
+        <footer>
+          <Icon type="star" theme="twoTone" twoToneColor="#fdd835" /> {props.repository.stargazers.totalCount}
+        </footer>
       </a>
-      <br/>
-      <Icon type="star" theme="twoTone" twoToneColor="#fdd835" /> {props.repository.stargazers.totalCount}
-    </Card>
+    </div>
   );
 };
 
