@@ -56,11 +56,13 @@ class IssueList extends Component {
 
                                 } />
 
-                            {item.labels.nodes.map((label: any) => {
-                                return <Tag color={"#" + label.color}>
-                                    <a href={item.repository.url + "/issues?q=is%3Aissue+is%3Aopen"}>{label.name}</a>
-                                </Tag>;
-                            })}
+                            <div>
+                                {item.labels.nodes.map((label: any) => {
+                                    return <Tag color={"#" + label.color}>
+                                        <a href={item.repository.url + "/issues?q=is%3Aissue+is%3Aopen"}>{label.name}</a>
+                                    </Tag>;
+                                })}
+                            </div>
                         </List.Item>
                     )}
                 />
