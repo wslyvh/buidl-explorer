@@ -38,6 +38,9 @@
   padding: 20px 0;
   text-align: center;
 }
+.featured-repository-row {
+  background: #f0f2f5;
+}
 
 .repository-card {
   font-family: 'Roboto', Arial, sans-serif;
@@ -67,7 +70,7 @@
 }
 
 .repository-card a {
-  color: #999;
+  color: #9e9e9e;
 }
 
 .repository-card .avatar {
@@ -114,6 +117,11 @@
 .repository-card footer i {
   margin-right: 5px;
   font-size: 1.2em;
+}
+
+/* Issues list */
+.newcomer-issues-row .ant-list-item {
+  text-align: left;
 }
 
 /* Footer */

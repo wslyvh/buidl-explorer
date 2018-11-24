@@ -50,21 +50,46 @@ const searchFeaturedQuery = `{
   genericQuery;
 
 const searchIssueQuery = `{
-  search(first: 10, query: "topic:Ethereum good-first-issues:>1 stars:5..50", type: REPOSITORY) {
+  search(first: 50, query: "topic:Ethereum good-first-issues:>1 stars:>10", type: REPOSITORY) {
     repositoryCount
     nodes {
       ... on Repository {
-        issues(first: 5, labels: ["first-timers-only", "good first issue", "up-for-grabs"], states: OPEN, orderBy: {field: UPDATED_AT, direction: DESC}) {
+        createdAt
+        issues(first: 1, labels: ["first-timers-only", "good first issue", "help wanted", "up-for-grabs"], states: OPEN, orderBy: {field: UPDATED_AT, direction: DESC}) {
           totalCount
           nodes {
+            id
             number
             title
-            url
+            bodyText
             state
+            url
             author {
               avatarUrl
               login
               url
+            }
+            labels(first: 10) {
+              totalCount
+              nodes {
+                name
+                color
+              }
+            }
+            repository {
+              id
+              name
+              description
+              url
+              stargazers {
+                totalCount
+              }
+              owner {
+                id
+                login
+                avatarUrl
+                url
+              }
             }
             createdAt
             updatedAt

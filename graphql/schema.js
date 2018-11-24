@@ -1,5 +1,5 @@
 const { gql } = require('apollo-server-express');
-const { client, searchLatestQuery, searchFeaturedQuery, searchIssueQuery } = require('./githubclient'); 
+const { client, searchLatestQuery, searchFeaturedQuery, searchIssueQuery } = require('./githubclient');
 
 const typeDefs = gql`
   type Query {
@@ -9,13 +9,17 @@ const typeDefs = gql`
   }
 
   type Issue {
-    number: String
-    title: String
-    url: String
-    state: String
+    id: String!
+    number: String!
+    title: String!
+    bodyText: String!
+    state: String!
+    url: String!
     author: Author
-    createdAt: String
-    updatedAt: String
+    labels: Labels!
+    repository: Repository
+    createdAt: String!
+    updatedAt: String!
   }
 
   type Repository {
@@ -25,10 +29,6 @@ const typeDefs = gql`
     url: String!
     stargazers: Stargazers!
     owner: Owner!
-  }
-
-  type Stargazers {
-    totalCount: Int!
   }
 
   type Author {
@@ -43,25 +43,33 @@ const typeDefs = gql`
     url: String!
     avatarUrl: String!
   }
+
+  type Stargazers {
+    totalCount: Int!
+  }
+
+  type Labels {
+    totalCount: Int!
+  }
 `;
 
 // Provide resolver functions for your schema fields  
 const resolvers = {
   Query: {
-    async latestRepositories () { 
+    async latestRepositories() {
       return getLatestRepositories();
     },
-    async featuredRepositories () { 
+    async featuredRepositories() {
       return getFeaturedRepositories();
     },
-    async issues () { 
+    async issues() {
       return getIssues();
     }
   },
 };
 
 const getLatestRepositories = async () => {
-    
+
   var response = await client.post("graphql", { query: searchLatestQuery });
   var repositories = response.data.data.search.nodes;
   var result = repositories.sort(function (a, b) { return b.stargazers.totalCount - a.stargazers.totalCount; });
@@ -70,7 +78,7 @@ const getLatestRepositories = async () => {
 };
 
 const getFeaturedRepositories = async () => {
-    
+
   var response = await client.post("graphql", { query: searchFeaturedQuery });
   var repositories = response.data.data.search.nodes;
   var result = repositories.sort(function (a, b) { return b.stargazers.totalCount - a.stargazers.totalCount; });
@@ -93,8 +101,7 @@ const getIssues = async () => {
   var issues = [];
   for (let index = 0; index < repositoryIssues.length; index++) {
     const issueList = repositoryIssues[index];
-    if (issueList.length > 0)
-    {
+    if (issueList.length > 0) {
       issues = issues.concat(issueList);
     }
   }
