@@ -32,14 +32,21 @@
 
 /* Featured Repository */
 .featured-repository-row,
-.newcomer-issues-row {
+.newcomer-issues-row,
+.newsletter {
   background-color: #fff;
   justify-content: center;
   padding: 20px 0;
   text-align: center;
 }
-.featured-repository-row {
+
+.featured-repository-row,
+.newsletter {
   background: #f0f2f5;
+}
+
+.newsletter {
+  margin-bottom: 30px;
 }
 
 .repository-card {
@@ -125,10 +132,19 @@
 }
 
 /* Footer */
+.ant-layout-footer { 
+  background: #C1C6CB;
+}
 .footer-icons {
   font-size: 18px;
 }
 .footer-icons a {
   color: #666;
   padding: 0 10px;
+}
+
+/* Mailchimp */
+#mce-error-response,
+#mce-success-response {
+  display: none;
 }

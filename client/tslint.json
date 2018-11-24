@@ -3,7 +3,8 @@
         "tslint:recommended"
     ],
     "rules": {
-        "no-console": false
+        "no-console": false,
+        "max-line-length": false
     },
     "jsRules": {
       "object-literal-sort-keys": false
