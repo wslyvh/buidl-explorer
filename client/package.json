@@ -1,5 +1,5 @@
 {
-  "name": "buidl-explorer",
+  "name": "buidl-explorer-client",
   "version": "0.1.0",
   "description": "Join the #BUIDL movement and contribute to open-source Ethereum projects",
   "author": "wslyvh",
@@ -20,8 +20,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --verbose --detectOpenHandles --forceExit",
     "eject": "react-scripts eject",
-    "lint": "tslint -c tslint.json -p tsconfig.json",
-    "lint-fix": "tslint --fix -c tslint.json -p tsconfig.json"
+    "lint": "tslint -c ../tslint.json -p ../tsconfig.json",
+    "lint-fix": "tslint --fix -c ../tslint.json -p ../tsconfig.json"
   },
   "proxy": "http://localhost:5000/",
   "eslintConfig": {

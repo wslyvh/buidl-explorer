@@ -18,7 +18,7 @@ class Newsletter extends Component {
                                 <div className="response" id="mce-success-response"></div>
                             </div>
                             <div aria-hidden="true" style={{ position: "absolute", left: -5000 }}>
-                                <input type="text" name="b_77ac9526e3208fe98c77e6252_afdc7ac712" tabIndex={-1} value="" />
+                                <input type="text" name="b_77ac9526e3208fe98c77e6252_afdc7ac712" tabIndex={-1} defaultValue="" />
                             </div>
 
                             <span className="ant-input-search">
