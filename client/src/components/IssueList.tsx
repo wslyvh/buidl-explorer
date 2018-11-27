@@ -1,10 +1,16 @@
-import { Avatar, Divider, List, Tag } from "antd";
+import { Avatar, Divider, Icon, List, Popover, Tag } from "antd";
 import React, { Component } from "react";
 
 class IssueList extends Component {
     public state = {
         issues: [],
     };
+
+    private infoIssues = (
+        <div>
+            <p>These issues are the most recent for each repository, that is specifically marked as 'good first issue' or 'help wanted'.</p>
+        </div>
+    );
 
     public componentDidMount() {
 
@@ -26,7 +32,15 @@ class IssueList extends Component {
     public render() {
         return (
             <div style={{ textAlign: "center" }}>
-                <Divider><h2>Good for newcomers</h2></Divider>
+                <Divider>
+                    <h2>Good for newcomers
+                        <small>
+                            <Popover content={this.infoIssues}>
+                                <Icon type="info-circle" theme="filled" />
+                            </Popover>
+                        </small>
+                    </h2>
+                </Divider>
                 <br />
                 <List
                     size="small"
@@ -57,8 +71,8 @@ class IssueList extends Component {
                                 } />
 
                             <div>
-                                {item.labels.nodes.map((label: any) => {
-                                    return <Tag color={"#" + label.color}>
+                                {item.labels.nodes.map((label: any, index: number) => {
+                                    return <Tag key={index} color={"#" + label.color}>
                                         <a href={item.repository.url + "/issues?q=is%3Aissue+is%3Aopen"}>{label.name}</a>
                                     </Tag>;
                                 })}
