@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/wslyvh/buidl-explorer#readme",
   "scripts": {
-    "start": "npm run server",
+    "start": "tsc && node ./build/index.js",
     "build": "tsc",
     "test": "cd client && npm run test",
     "lint": "tslint -c tslint.json -p tsconfig.json",
