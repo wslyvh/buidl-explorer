@@ -16,12 +16,12 @@
   },
   "homepage": "https://github.com/wslyvh/buidl-explorer#readme",
   "scripts": {
-    "start": "nodemon --exec ts-node -- index.ts",
+    "start": "ts-node -- index.ts",
     "build": "tsc",
     "test": "cd client && npm run test",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "lint-fix": "tslint --fix -c tslint.json -p tsconfig.json",
-
+    "server": "nodemon --exec ts-node -- index.ts",
     "client": "cd client && npm run start",
     "dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run client\"",
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
