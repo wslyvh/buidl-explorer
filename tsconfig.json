@@ -17,11 +17,13 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "noEmit": true,
-    "jsx": "preserve"
+    "noEmit": false,
+    "jsx": "preserve",
+    "outDir": "build"
   },
   "exclude": [
     "**/build",
+    "**/client",
     "**/coverage",
     "**/dist",
     "**/node_modules",
