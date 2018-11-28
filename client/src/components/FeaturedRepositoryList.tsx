@@ -1,6 +1,5 @@
 import { Divider, Icon, List, Popover } from "antd";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import RepositoryCard from "./RepositoryCard";
 
 class FeaturedRepositoryList extends Component {
@@ -55,7 +54,7 @@ class FeaturedRepositoryList extends Component {
           />
         </div>
         <div style={{ textAlign: "right" }}>
-          <Link to="/repositories">View all repositories &raquo;</Link>
+          <a href="/repositories">View all repositories &raquo;</a>
         </div>
       </div>
     );

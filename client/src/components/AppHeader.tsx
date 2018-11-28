@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 class AppHeader extends Component {
   public render() {
     return (
       <div>
         <h1>
-          <Link to="/">#BUIDL Explorer</Link>
+          <a href="/">#BUIDL Explorer</a>
         </h1>
         <p>
           Starting with open-source projects can be freighting, especially in a fast moving space as blockchain. <br />
