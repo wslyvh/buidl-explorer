@@ -1,5 +1,6 @@
 import { Divider, Icon, List, Popover } from "antd";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import RepositoryCard from "./RepositoryCard";
 
 class FeaturedRepositoryList extends Component {
@@ -32,25 +33,30 @@ class FeaturedRepositoryList extends Component {
 
   public render() {
     return (
-      <div style={{ textAlign: "center" }}>
-        <Divider>
-          <h2>Featured Repositories
+      <div>
+        <div style={{ textAlign: "center" }}>
+          <Divider>
+            <h2>Featured Repositories
             <small>
-              <Popover content={this.infoFeatured}>
-                <Icon type="info-circle" theme="filled" />
-              </Popover>
-            </small>
-          </h2>
-        </Divider>
+                <Popover content={this.infoFeatured}>
+                  <Icon type="info-circle" theme="filled" />
+                </Popover>
+              </small>
+            </h2>
+          </Divider>
 
-        <List
-          grid={{ gutter: 16, xs: 1, sm: 1, md: 2, lg: 2, xl: 4, xxl: 4 }}
-          dataSource={this.state.repos} renderItem={(repo: any) => (
-            <List.Item>
-              <RepositoryCard key={repo.id} repository={repo} />
-            </List.Item>
-          )}
-        />
+          <List
+            grid={{ gutter: 16, xs: 1, sm: 1, md: 2, lg: 2, xl: 4, xxl: 4 }}
+            dataSource={this.state.repos} renderItem={(repo: any) => (
+              <List.Item>
+                <RepositoryCard key={repo.id} repository={repo} />
+              </List.Item>
+            )}
+          />
+        </div>
+        <div style={{ textAlign: "right" }}>
+          <Link to="/repositories">View all repositories &raquo;</Link>
+        </div>
       </div>
     );
   }

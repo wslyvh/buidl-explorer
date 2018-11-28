@@ -30,7 +30,7 @@ export class GithubQueries {
   }`;
 
   public static SearchLatestRepositoriesQuery: string = `{
-    search(first: 4, query: "topic:Ethereum good-first-issues:>1 sort:stars-desc archived:false is:public", type: REPOSITORY) {` +
+    search(first: 80, query: "topic:Ethereum good-first-issues:>1 sort:stars-desc archived:false is:public stars:>5", type: REPOSITORY) {` +
     GithubQueries.GenericRepositoryQuery;
 
   public static SearchFeaturedRepositoriesQuery: string = `{
@@ -38,7 +38,7 @@ export class GithubQueries {
     GithubQueries.GenericRepositoryQuery;
 
   public static SearchIssueQuery: string = `{
-    search(first: 50, query: "topic:Ethereum good-first-issues:>1 stars:>10", type: REPOSITORY) {
+    search(first: 50, query: "topic:Ethereum good-first-issues:>1 archived:false is:public stars:>5", type: REPOSITORY) {
       repositoryCount
       nodes {
         ... on Repository {

@@ -30,6 +30,15 @@
   line-height: normal;
 }
 
+.max-lines {
+  display: block; /* or inline-block */
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 5.5em;
+  line-height: 1.6em;
+}
+
 /* Featured Repository */
 .featured-repository-row,
 .newcomer-issues-row,
@@ -60,6 +69,7 @@ h2 small {
   position: relative;
   overflow: hidden;
   min-height: 300px;
+  max-height: 300px;
   width: 100%;
   background-color: #ffffff;
   border-radius: 5px;
