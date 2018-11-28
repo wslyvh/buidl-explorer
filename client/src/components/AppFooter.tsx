@@ -1,4 +1,4 @@
-import { Icon } from "antd";
+import { BackTop, Icon } from "antd";
 import React, { Component } from "react";
 
 class AppFooter extends Component {
@@ -8,9 +8,11 @@ class AppFooter extends Component {
         <a href="https://twitter.com/wslyvh">
           <Icon type="twitter" /> <small>follow</small>
         </a>
-        <a href="https://github.com/wslyvh/buidl-explorer/issues/new">
+        <a href="https://github.com/wslyvh/buidl-explorer/issues/new?template=feature_request.md">
           <Icon type="github" /> <small>feedback</small>
         </a>
+
+        <BackTop />
       </div>
     );
   }
