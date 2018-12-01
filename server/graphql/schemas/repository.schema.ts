@@ -3,6 +3,7 @@ import { GraphQLSchema } from "graphql";
 
 const repositorySchema: GraphQLSchema = makeExecutableSchema({ typeDefs: gql`
 	type Query {
+		searchRepositories(first: Int!, after: String): [Repository]
 		latestRepositories: [Repository]
 		featuredRepositories: [Repository]
 	}

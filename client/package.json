@@ -29,7 +29,11 @@
   },
   "dependencies": {
     "antd": "^3.10.8",
+    "apollo-boost": "^0.1.22",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.0",
     "react": "^16.6.3",
+    "react-apollo": "^2.3.1",
     "react-dom": "^16.6.3",
     "react-emoji-render": "^0.5.0",
     "react-router-dom": "^4.3.1",

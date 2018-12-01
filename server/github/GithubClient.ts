@@ -22,6 +22,16 @@ export class GithubClient {
         });
     }
 
+    public async searchRepositories(args: any): Promise<any> {
+        const after = args.after ? `after:"${args.after}",` : "";
+        const query = `{
+            search(first: ${args.first},${after} query: "topic:Ethereum good-first-issues:>1 sort:stars-desc archived:false is:public stars:>5", type: REPOSITORY) {` +
+            GithubQueries.GenericRepositoryQuery;
+
+        const repositories = await this.post(query);
+        return repositories.sort((a: any, b: any) => b.stargazers.totalCount - a.stargazers.totalCount);
+    }
+
     public async getLatestRepositories(): Promise<any> {
         const repositories = await this.post(GithubQueries.SearchLatestRepositoriesQuery);
         return repositories.sort((a: any, b: any) => b.stargazers.totalCount - a.stargazers.totalCount);

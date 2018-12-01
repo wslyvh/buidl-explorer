@@ -1,28 +1,28 @@
 import { Divider, List } from "antd";
+import gql from "graphql-tag";
 import React, { Component } from "react";
+import { SearchRepositoryQuery } from "../data/queries/RepositoryQuery";
 import RepositoryCard from "./RepositoryCard";
 
-class RepositoryOverview extends Component {
-    public state = {
-        repos: [],
-    };
-
-    public componentDidMount() {
-
-        this.callBackendAPI()
-            .then((result) => this.setState({ repos: result }))
-            .catch((error) => console.log(error));
-    }
-
-    public callBackendAPI = async () => {
-        const response = await fetch("/api/repositories/latest");
-        const body = await response.json();
-
-        if (response.status !== 200) {
-            throw Error(body.message);
+const GET_REPOS = gql`
+query($first: Int!) {
+    searchRepositories(first: $first) {
+        id
+        name
+        description
+        url
+        owner {
+            login
+            url
+            avatarUrl
         }
-        return body;
+        stargazers {
+            totalCount
+        }
     }
+}`;
+
+class RepositoryOverview extends Component {
 
     public render() {
         return (
@@ -32,14 +32,26 @@ class RepositoryOverview extends Component {
                         <h2>All Repositories</h2>
                     </Divider>
 
-                    <List
-                        grid={{ gutter: 16, xs: 1, sm: 1, md: 2, lg: 2, xl: 4, xxl: 4 }}
-                        dataSource={this.state.repos} renderItem={(repo: any) => (
-                            <List.Item>
-                                <RepositoryCard key={repo.id} repository={repo} />
-                            </List.Item>
-                        )}
-                    />
+                    <SearchRepositoryQuery query={GET_REPOS} variables={{first: 100}}>
+                        {({ loading, error, data }) => {
+                            if (error) { return `Error!: ${error}`; }
+                            const result = data ? data.searchRepositories : [];
+
+                            return (
+                                <List
+                                    loading={loading}
+                                    grid={{ gutter: 16, xs: 1, sm: 1, md: 2, lg: 2, xl: 4, xxl: 4 }}
+                                    dataSource={result}
+                                    renderItem={(repo: any) => (
+                                        <List.Item>
+                                            <RepositoryCard key={repo.id} repository={repo} />
+                                        </List.Item>
+                                    )}
+                                />
+                            );
+                        }}
+                    </SearchRepositoryQuery>
+
                 </div>
             </div>
         );
