@@ -1,9 +1,64 @@
-import { Button, Divider, List } from "antd";
+import { Button, Divider, List, Tag } from "antd";
 import gql from "graphql-tag";
 import React, { Component } from "react";
 import { SearchRepositoryQuery } from "../data/queries/RepositoryQuery";
 import { IRepository, ISearchRepositories } from "../types";
 import RepositoryCard from "./RepositoryCard";
+
+const languages = [
+    {
+        color: "#f34b7d",
+        name: "C++",
+    },
+    {
+        color: "#db5855",
+        name: "Clojure",
+    },
+    {
+        color: "#375eab",
+        name: "Go",
+    },
+    {
+        color: "#5e5086",
+        name: "Haskell",
+    },
+    {
+        color: "#b07219",
+        name: "Java",
+    },
+    {
+        color: "#f1e05a",
+        name: "JavaScript",
+    },
+    {
+        color: "#37775b",
+        name: "Nim",
+    },
+    {
+        color: "#4F5D95",
+        name: "PHP",
+    },
+    {
+        color: "#3572A5",
+        name: "Python",
+    },
+    {
+        color: "#701516",
+        name: "Ruby",
+    },
+    {
+        color: "#c22d40",
+        name: "Scala",
+    },
+    {
+        color: "#AA6746",
+        name: "Solidity",
+    },
+    {
+        color: "#2b7489",
+        name: "TypeScript",
+    },
+];
 
 const GET_REPOS = gql`
 query($first: Int!, $startCursor:String, $endCursor: String) {
@@ -40,11 +95,25 @@ export interface IProps {
     searchResultData: ISearchRepositories;
 }
 
-class RepositoryOverview extends Component<IProps> {
+export interface IState {
+    filter: string;
+}
+
+class RepositoryOverview extends Component<IProps, IState> {
     public static defaultProps = {
         limit: 4,
         searchResultData: null,
     };
+
+    public static defaultState = {
+        filter: "",
+    };
+
+    public filter(name: string) {
+        this.setState(
+            { filter: name },
+        );
+    }
 
     public render() {
         const { limit, searchResultData } = this.props;
@@ -58,11 +127,25 @@ class RepositoryOverview extends Component<IProps> {
                         </h2>
                     </Divider>
 
+                    <div>
+                        {languages.map((language: any, index: number) => {
+                            return <Tag key={index} color={language.color} style={{ padding: "10px 15px 30px 15px", fontSize: 12 }}>
+                                <a href="#" onClick={() => this.filter(language.name)}>{language.name}</a>
+                            </Tag>;
+                        })}
+                        <a href="#" hidden={this.state && this.state.filter === ""} onClick={() => this.filter("")}>Clear</a>
+                    </div>
+                    <br /><br />
+
                     <SearchRepositoryQuery query={GET_REPOS} variables={{ first: limit }}>
                         {({ loading, error, data, fetchMore }) => {
                             if (error) { return `Error!: ${error}`; }
                             const pageInfo = (data && data.searchRepositories) ? data.searchRepositories.pageInfo : { hasNextPage: false, endCursor: "" };
-                            const repositories = (data && data.searchRepositories) ? data.searchRepositories.nodes : [];
+                            let repositories = (data && data.searchRepositories) ? data.searchRepositories.nodes : [];
+
+                            if (this.state && this.state.filter) {
+                                repositories = repositories.filter((repo: any) => repo.primaryLanguage && repo.primaryLanguage.name === this.state.filter);
+                            }
                             // searchResultData
 
                             if (pageInfo.hasNextPage) {
