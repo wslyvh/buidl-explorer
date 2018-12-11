@@ -29,6 +29,13 @@ app.get("/api/repositories/featured", async (req, res) => {
   res.json(result);
 });
 
+app.get("/api/issues/new", async (req, res) => {
+
+  const client = new GithubClient();
+  const result = await client.getNewIssues();
+  res.json(result);
+});
+
 app.get("/api/issues", async (req, res) => {
 
   const client = new GithubClient();

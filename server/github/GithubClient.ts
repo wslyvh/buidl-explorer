@@ -44,6 +44,30 @@ export class GithubClient {
         return repositories.sort((a: any, b: any) => b.stargazers.totalCount - a.stargazers.totalCount);
     }
 
+    public async getNewIssues(): Promise<any> {
+        const repositories = await this.post(GithubQueries.SearchNewIssueQuery);
+        const repositoryIssues = repositories.map((repository: any) => {
+            return repository.issues.nodes.map((issue: any) => {
+                return {
+                    ...issue,
+                };
+            });
+        });
+
+        let issues = new Array<any>();
+        for (const repository of repositoryIssues) {
+            if (repository.length > 0) {
+                issues = issues.concat(repository);
+            }
+        }
+
+        const today = new Date();
+        const lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+        const filtered = issues.filter((issue) => new Date(issue.createdAt) > lastWeek);
+
+        return filtered; // .sort((a: any, b: any) => +new Date(b.createdAt) - +new Date(a.createdAt));
+    }
+
     public async getLatestIssues(): Promise<any> {
         const repositories = await this.post(GithubQueries.SearchIssueQuery);
         const repositoryIssues = repositories.map((repository: any) => {

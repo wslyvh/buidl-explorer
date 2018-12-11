@@ -39,6 +39,41 @@ export class GithubQueries {
     search(first: ${GithubQueries.DefaultPageSize}, query: "topic:Ethereum good-first-issues:>1 sort:updated-desc archived:false is:public stars:5..50", type: REPOSITORY) {` +
     GithubQueries.GenericRepositoryQuery;
 
+  public static SearchNewIssueQuery: string = `{
+    search(first: 100, query: "topic:Ethereum good-first-issues:>1 archived:false is:public stars:>5", type: REPOSITORY) {
+      repositoryCount
+      nodes {
+        ... on Repository {
+          createdAt
+          issues(first: 10, labels: ["first-timers-only", "good first issue", "help wanted", "up-for-grabs"], states: OPEN, orderBy: {field: UPDATED_AT, direction: DESC}) {
+            totalCount
+            nodes {
+              id
+              number
+              title
+              bodyText
+              state
+              url
+              author {
+                avatarUrl
+                login
+                url
+              }
+              repository {
+                id
+                name
+                nameWithOwner
+                url
+              }
+              createdAt
+              updatedAt
+            }
+          }
+        }
+      }
+    }
+  }`;
+
   public static SearchIssueQuery: string = `{
     search(first: 50, query: "topic:Ethereum good-first-issues:>1 archived:false is:public stars:>5", type: REPOSITORY) {
       repositoryCount
