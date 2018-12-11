@@ -27,7 +27,7 @@ class Repositories extends Component {
           <Row type="flex" className="featured-repository-row">
             <Col span={16}>
               <ApolloProvider client={client}>
-                <RepositoryOverview />
+                <RepositoryOverview limit={100} />
               </ApolloProvider>
             </Col>
           </Row>

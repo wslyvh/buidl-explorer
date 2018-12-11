@@ -1,12 +1,14 @@
 import { Query } from "react-apollo";
-import { IRepository } from "../../types";
+import { ISearchRepositories } from "../../types";
 
-interface IRepositoryData {
-    searchRepositories: IRepository[];
+interface ISearchRepositoryResults {
+    searchRepositories: ISearchRepositories;
 }
 
-interface IQueryVariables {
+interface ISearchArguments {
     first: number;
+    startCursor?: string;
+    endCursor?: string;
 }
 
-export class SearchRepositoryQuery extends Query<IRepositoryData, IQueryVariables> { }
+export class SearchRepositoryQuery extends Query<ISearchRepositoryResults, ISearchArguments> { }

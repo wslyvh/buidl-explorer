@@ -1,12 +1,35 @@
-export interface IUser {
+export interface ISearchRepositories {
+  repositoryCount: number;
+  pageInfo: IPageInfo;
+  nodes: INode[];
+}
+
+export interface IPageInfo {
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  startCursor: string;
+  endCursor: string;
+}
+
+export interface INode {
   id: string;
+}
+
+export interface IRepository extends INode {
+  name: string;
+  description: string;
+  url: string;
+  stargazers: IStargazers;
+  owner: IUser;
+}
+
+export interface IUser extends INode {
   login: string;
   avatarUrl: string;
   url: string;
 }
 
-export interface IIssue {
-  id: string;
+export interface IIssue extends INode {
   number: number;
   title: string;
   bodyText: string;
@@ -16,15 +39,6 @@ export interface IIssue {
   repository?: IRepository;
   createdAt: string;
   updatedAt: string;
-}
-
-export interface IRepository {
-  id: string;
-  name: string;
-  description: string;
-  url: string;
-  stargazers: IStargazers;
-  owner: IUser;
 }
 
 export interface IStargazers {

@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import * as dotenv from "dotenv";
 import { GithubQueries } from "./Queries";
+import { ISearchArguments } from "./types";
 
 dotenv.config();
 
@@ -22,14 +23,15 @@ export class GithubClient {
         });
     }
 
-    public async searchRepositories(args: any): Promise<any> {
-        const after = args.after ? `after:"${args.after}",` : "";
+    public async searchRepositories(args: ISearchArguments): Promise<any> {
+        const after = args.endCursor ? `after:"${args.endCursor}",` : "";
         const query = `{
-            search(first: ${args.first},${after} query: "topic:Ethereum good-first-issues:>1 sort:stars-desc archived:false is:public stars:>5", type: REPOSITORY) {` +
+            search(first: ${args.first}, ${after} query: "topic:Ethereum good-first-issues:>1 sort:stars-desc archived:false is:public stars:>5", type: REPOSITORY) {` +
             GithubQueries.GenericRepositoryQuery;
 
-        const repositories = await this.post(query);
-        return repositories.sort((a: any, b: any) => b.stargazers.totalCount - a.stargazers.totalCount);
+        const response = await this.client.post("graphql", { query });
+        const searchResults = response.data.data.search;
+        return searchResults;
     }
 
     public async getLatestRepositories(): Promise<any> {
