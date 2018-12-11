@@ -27,6 +27,7 @@ const repositorySchema: GraphQLSchema = makeExecutableSchema({ typeDefs: gql`
 		description: String!
 		url: String!
 		stargazers: Stargazers!
+		primaryLanguage: Language
 		owner: Owner!
 	}
 
@@ -39,6 +40,11 @@ const repositorySchema: GraphQLSchema = makeExecutableSchema({ typeDefs: gql`
 
 	type Stargazers {
 		totalCount: Int!
+	}
+
+	type Language {
+		name: String!
+		color: String
 	}
 `});
 

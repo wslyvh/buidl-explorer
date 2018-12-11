@@ -21,6 +21,7 @@ export interface IRepository extends INode {
   url: string;
   stargazers: IStargazers;
   owner: IUser;
+  primaryLanguage: ILanguage;
 }
 
 export interface IUser extends INode {
@@ -50,6 +51,11 @@ export interface ILabels {
 }
 
 export interface ILabelNodes {
+  name: string;
+  color: string;
+}
+
+export interface ILanguage extends INode {
   name: string;
   color: string;
 }

@@ -13,22 +13,26 @@ export class GithubQueries {
       ...Repository
     }
   }
-  }
+}
 
-  fragment Repository on Repository {
-  id
-  name
-  description
-  url
-  stargazers {
-    totalCount
-  }
-  owner {
+    fragment Repository on Repository {
     id
-    login
-    avatarUrl
+    name
+    description
     url
-  }
+    stargazers {
+      totalCount
+    }
+    owner {
+      id
+      login
+      avatarUrl
+      url
+    }
+    primaryLanguage {
+      name
+      color
+    }
   }`;
 
   public static SearchLatestRepositoriesQuery: string = `{

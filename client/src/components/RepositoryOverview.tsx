@@ -27,6 +27,10 @@ query($first: Int!, $startCursor:String, $endCursor: String) {
             stargazers {
                 totalCount
             }
+            primaryLanguage {
+                name
+                color
+            }
         }
     }
 }`;
