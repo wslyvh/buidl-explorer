@@ -86,6 +86,12 @@ query($first: Int!, $startCursor:String, $endCursor: String) {
                 name
                 color
             }
+            languages {
+                totalCount
+                nodes {
+                    name
+                }
+            }
         }
     }
 }`;
@@ -144,7 +150,7 @@ class RepositoryOverview extends Component<IProps, IState> {
                             let repositories = (data && data.searchRepositories) ? data.searchRepositories.nodes : [];
 
                             if (this.state && this.state.filter) {
-                                repositories = repositories.filter((repo: any) => repo.primaryLanguage && repo.primaryLanguage.name === this.state.filter);
+                                repositories = repositories.filter((repo: any) => repo.languages.nodes.some((x: any) => x.name === this.state.filter));
                             }
                             // searchResultData
 

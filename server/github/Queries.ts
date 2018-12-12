@@ -33,6 +33,13 @@ export class GithubQueries {
       name
       color
     }
+    languages(first: 5, orderBy: {field: SIZE, direction: DESC}) {
+      totalCount
+      nodes {
+        name
+        color
+      }
+    }
   }`;
 
   public static SearchLatestRepositoriesQuery: string = `{
