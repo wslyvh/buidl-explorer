@@ -65,7 +65,7 @@ export class GithubClient {
         const lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
         const filtered = issues.filter((issue) => new Date(issue.createdAt) > lastWeek);
 
-        return filtered; // .sort((a: any, b: any) => +new Date(b.createdAt) - +new Date(a.createdAt));
+        return filtered;
     }
 
     public async getLatestIssues(): Promise<any> {
@@ -91,6 +91,6 @@ export class GithubClient {
     private async post(query: string): Promise<any> {
 
         const response = await this.client.post("graphql", { query });
-        return response.data.data.search.nodes; // Better Data mapping / or pass-through
+        return response.data.data.search.nodes;
     }
 }

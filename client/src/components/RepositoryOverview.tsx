@@ -152,7 +152,6 @@ class RepositoryOverview extends Component<IProps, IState> {
                             if (this.state && this.state.filter) {
                                 repositories = repositories.filter((repo: any) => repo.languages.nodes.some((x: any) => x.name === this.state.filter));
                             }
-                            // searchResultData
 
                             if (pageInfo.hasNextPage) {
                                 fetchMore({
