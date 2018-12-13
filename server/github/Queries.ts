@@ -55,7 +55,10 @@ export class GithubQueries {
       repositoryCount
       nodes {
         ... on Repository {
+          name
+          nameWithOwner
           createdAt
+          url
           issues(first: 10, labels: ["first-timers-only", "good first issue", "help wanted", "up-for-grabs"], states: OPEN, orderBy: {field: UPDATED_AT, direction: DESC}) {
             totalCount
             nodes {
