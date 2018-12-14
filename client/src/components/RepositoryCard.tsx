@@ -1,7 +1,6 @@
 import { Icon, Tag } from "antd";
 import React from "react";
 import { Emojione } from "react-emoji-render";
-import { OutboundLink } from "react-ga";
 import { IRepository } from "../types";
 
 interface IRepositoryProps {
@@ -14,7 +13,7 @@ const RepositoryCard: React.SFC<IRepositoryProps> = (props) => {
 
   return (
     <div className="repository-card" style={{ borderTop: "5px solid" + color }}>
-      <OutboundLink eventLabel={props.repository.name} to={props.repository.url} target="_blank">
+      <a href={props.repository.url} target="_blank">
         <img className="avatar" src={props.repository.owner.avatarUrl} alt={props.repository.name} />
         <h3>{props.repository.name}</h3>
         <p className="max-lines">
@@ -24,7 +23,7 @@ const RepositoryCard: React.SFC<IRepositoryProps> = (props) => {
           {languageLabel}
           <Icon type="star" theme="twoTone" twoToneColor="#fdd835" /> {props.repository.stargazers.totalCount}
         </footer>
-      </OutboundLink>
+      </a>
     </div>
   );
 };

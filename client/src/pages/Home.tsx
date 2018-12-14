@@ -1,7 +1,6 @@
 
 import { Col, Layout, Row } from "antd";
 import React, { Component } from "react";
-import ReactGA from "react-ga";
 import AppFooter from "../components/AppFooter";
 import AppHeader from "../components/AppHeader";
 import FeaturedRepositoryList from "../components/FeaturedRepositoryList";
@@ -13,11 +12,6 @@ import "../App.css";
 const { Content, Footer, Header } = Layout;
 
 class Home extends Component {
-
-  public componentDidMount() {
-    ReactGA.initialize("UA-129733958-1");
-    console.log("Mounted..");
-  }
 
   public render() {
     return (

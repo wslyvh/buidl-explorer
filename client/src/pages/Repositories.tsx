@@ -3,7 +3,6 @@ import { Col, Layout, Row } from "antd";
 import { ApolloClient, ApolloClientOptions, HttpLink, InMemoryCache } from "apollo-boost";
 import React, { Component } from "react";
 import { ApolloProvider } from "react-apollo";
-import ReactGA from "react-ga";
 import AppFooter from "../components/AppFooter";
 import AppHeader from "../components/AppHeader";
 import RepositoryOverview from "../components/RepositoryOverview";
@@ -17,11 +16,6 @@ const client = new ApolloClient({
 });
 
 class Repositories extends Component {
-  public componentDidMount() {
-    ReactGA.initialize("UA-129733958-1");
-    console.log("Mounted..");
-  }
-
   public render() {
     return (
       <Layout className="App">

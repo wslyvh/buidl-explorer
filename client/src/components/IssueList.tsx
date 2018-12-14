@@ -1,6 +1,5 @@
 import { Avatar, Divider, Icon, List, Popover, Tag } from "antd";
 import React, { Component } from "react";
-import { OutboundLink } from "react-ga";
 
 class IssueList extends Component {
     public state = {
@@ -52,15 +51,14 @@ class IssueList extends Component {
                         <List.Item key={item.title}>
                             <List.Item.Meta
                                 avatar={
-                                    <OutboundLink eventLabel={item.repository.name} to={item.repository.url} target="_blank">
-                                        <Avatar size="large" src={item.repository.owner.avatarUrl} alt={item.repository.name} />
-                                    </OutboundLink>
+                                    <a href={item.repository.url} target="_blank">
+                                        <Avatar size="large" src={item.repository.owner.avatarUrl}
+                                            alt={item.repository.name} />
+                                    </a>
                                 }
                                 title={
                                     <span>
-                                        <OutboundLink eventLabel={item.repository.name} to={item.url} target="_blank">
-                                            {item.title}
-                                        </OutboundLink>
+                                        <a href={item.url} target="_blank">{item.title}</a>
                                     </span>
                                 }
                                 description={
@@ -75,9 +73,7 @@ class IssueList extends Component {
                             <div>
                                 {item.labels.nodes.map((label: any, index: number) => {
                                     return <Tag key={index} color={"#" + label.color}>
-                                        <OutboundLink eventLabel={item.repository.name} to={item.repository.url + "/issues?q=is%3Aissue+is%3Aopen"} target="_blank">
-                                            {label.name}
-                                        </OutboundLink>
+                                        <a href={item.repository.url + "/issues?q=is%3Aissue+is%3Aopen"}>{label.name}</a>
                                     </Tag>;
                                 })}
                             </div>
