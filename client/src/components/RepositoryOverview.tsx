@@ -31,6 +31,10 @@ const languages = [
         name: "JavaScript",
     },
     {
+        color: "#f18e33",
+        name: "Kotlin",
+    },
+    {
         color: "#37775b",
         name: "Nim",
     },
