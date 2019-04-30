@@ -1,5 +1,6 @@
 export interface ISearchArguments {
-    first: number;
-    startCursor: string;
-    endCursor: string;
+	first: number;
+	type: string;
+	startCursor: string;
+	endCursor: string;
 }
