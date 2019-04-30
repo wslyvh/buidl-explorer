@@ -1,55 +1,55 @@
 {
-  "name": "buidl-explorer",
-  "version": "0.1.0",
-  "description": "Join the #BUIDL movement and contribute to open-source Ethereum projects",
-  "author": "wslyvh",
-  "license": "MIT",
-  "keywords": [
-    "ethereum"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wslyvh/buidl-explorer.git"
-  },
-  "bugs": {
-    "url": "https://github.com/wslyvh/buidl-explorer/issues"
-  },
-  "homepage": "https://github.com/wslyvh/buidl-explorer#readme",
-  "scripts": {
-    "start": "node ./build/index.js",
-    "build": "tsc",
-    "test": "cd client && npm run test",
-    "lint": "tslint -c tslint.json -p tsconfig.json",
-    "lint-fix": "tslint --fix -c tslint.json -p tsconfig.json",
-    "server": "nodemon --exec ts-node -- index.ts",
-    "client": "cd client && npm run start",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "postinstall": "npm run build",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
-  },
-  "dependencies": {
-    "apollo-server-express": "^2.2.2",
-    "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.5",
-    "dotenv": "^6.1.0",
-    "express": "^4.16.4",
-    "graphql": "^14.0.2",
-    "ts-node": "^7.0.1",
-    "typescript": "^3.1.6"
-  },
-  "devDependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/body-parser": "^1.17.0",
-    "@types/cors": "^2.8.4",
-    "@types/dotenv": "^6.1.0",
-    "@types/express": "^4.16.0",
-    "@types/graphql": "^14.0.3",
-    "@types/jest": "^23.3.9",
-    "@types/node": "^10.12.10",
-    "concurrently": "^4.1.0",
-    "jest": "^23.6.0",
-    "ts-jest": "^23.10.5",
-    "tslint": "^5.11.0"
-  }
+	"name": "buidl-explorer",
+	"version": "0.1.0",
+	"description": "Join the #BUIDL movement and contribute to open-source Ethereum projects",
+	"author": "wslyvh",
+	"license": "MIT",
+	"keywords": [
+		"ethereum"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/wslyvh/buidl-explorer.git"
+	},
+	"bugs": {
+		"url": "https://github.com/wslyvh/buidl-explorer/issues"
+	},
+	"homepage": "https://github.com/wslyvh/buidl-explorer#readme",
+	"scripts": {
+		"start": "node ./build/index.js",
+		"build": "tsc",
+		"test": "cd client && npm run test",
+		"lint": "tslint -c tslint.json -p tsconfig.json",
+		"lint-fix": "tslint --fix -c tslint.json -p tsconfig.json",
+		"server": "nodemon --exec ts-node -- index.ts",
+		"client": "cd client && npm run start",
+		"dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+		"postinstall": "npm run build",
+		"heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+	},
+	"dependencies": {
+		"apollo-server-express": "^2.2.2",
+		"axios": "^0.18.0",
+		"body-parser": "^1.18.3",
+		"cors": "^2.8.5",
+		"dotenv": "^6.1.0",
+		"express": "^4.16.4",
+		"graphql": "^14.0.2",
+		"ts-node": "^7.0.1",
+		"typescript": "^3.1.6"
+	},
+	"devDependencies": {
+		"@types/axios": "^0.14.0",
+		"@types/body-parser": "^1.17.0",
+		"@types/cors": "^2.8.4",
+		"@types/dotenv": "^6.1.0",
+		"@types/express": "^4.16.0",
+		"@types/graphql": "^14.0.3",
+		"@types/jest": "^23.3.9",
+		"@types/node": "^10.12.10",
+		"concurrently": "^4.1.0",
+		"jest": "^23.6.0",
+		"ts-jest": "^23.10.5",
+		"tslint": "^5.11.0"
+	}
 }
