@@ -14,10 +14,10 @@ export class GithubClient {
     this.client = axios.create({
       baseURL: "https://api.github.com/",
       headers: {
-        "Accept": "application/json",
-        "Authorization": "Bearer " + githubToken,
-        "Content-Type": "application/json",
-      },
+        Accept: "application/json",
+        Authorization: "Bearer " + githubToken,
+        "Content-Type": "application/json"
+      }
     });
   }
 
@@ -39,19 +39,19 @@ export class GithubClient {
 
   public async getLatestRepositories(): Promise<any> {
     const repositories = await this.post(
-      GithubQueries.SearchLatestRepositoriesQuery,
+      GithubQueries.SearchLatestRepositoriesQuery
     );
     return repositories.sort(
-      (a: any, b: any) => b.stargazers.totalCount - a.stargazers.totalCount,
+      (a: any, b: any) => b.stargazers.totalCount - a.stargazers.totalCount
     );
   }
 
   public async getFeaturedRepositories(): Promise<any> {
     const repositories = await this.post(
-      GithubQueries.SearchFeaturedRepositoriesQuery,
+      GithubQueries.SearchFeaturedRepositoriesQuery
     );
     return repositories.sort(
-      (a: any, b: any) => b.stargazers.totalCount - a.stargazers.totalCount,
+      (a: any, b: any) => b.stargazers.totalCount - a.stargazers.totalCount
     );
   }
 
@@ -60,14 +60,14 @@ export class GithubClient {
     const lastWeek = new Date(
       today.getFullYear(),
       today.getMonth(),
-      today.getDate() - 7,
+      today.getDate() - 7
     );
 
     const repositories = await this.post(GithubQueries.SearchNewIssueQuery);
     const filteredRepos = repositories.filter(
       (r: any) =>
         r.issues.totalCount > 0 &&
-        r.issues.nodes.some((i: any) => new Date(i.createdAt) > lastWeek),
+        r.issues.nodes.some((i: any) => new Date(i.createdAt) > lastWeek)
     );
 
     let totalIssues = 0;
@@ -80,7 +80,7 @@ export class GithubClient {
             return {
               author: issue.author.login,
               name: issue.title,
-              url: issue.url,
+              url: issue.url
             };
           });
 
@@ -88,7 +88,7 @@ export class GithubClient {
           issueCount: issues.length,
           issues,
           name: repository.nameWithOwner,
-          url: repository.url,
+          url: repository.url
         };
       })
       .sort((a: any, b: any) => a.issueCount < b.issueCount);
@@ -99,7 +99,7 @@ export class GithubClient {
     for (const rep of filtered) {
       console.log(`${rep.name} - ${rep.issueCount} issues`);
       console.log(
-        rep.url + `/issues?q=is%3Aissue+is%3Aopen+label%3A"good+first+issue"`,
+        rep.url + `/issues?q=is%3Aissue+is%3Aopen+label%3A"good+first+issue"`
       );
 
       let count = 1;
@@ -118,7 +118,7 @@ export class GithubClient {
     const repositoryIssues = repositories.map((repository: any) => {
       return repository.issues.nodes.map((issue: any) => {
         return {
-          ...issue,
+          ...issue
         };
       });
     });
@@ -131,7 +131,7 @@ export class GithubClient {
     }
 
     return issues.sort(
-      (a: any, b: any) => +new Date(b.updatedAt) - +new Date(a.updatedAt),
+      (a: any, b: any) => +new Date(b.updatedAt) - +new Date(a.updatedAt)
     );
   }
 

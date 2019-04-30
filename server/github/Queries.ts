@@ -1,5 +1,4 @@
 export class GithubQueries {
-
   public static DefaultPageSize = 4;
 
   public static GenericRepositoryQuery: string = `
@@ -42,12 +41,18 @@ export class GithubQueries {
     }
   }`;
 
-  public static SearchLatestRepositoriesQuery: string = `{
-    search(first: ${GithubQueries.DefaultPageSize}, query: "topic:Ethereum good-first-issues:>1 sort:stars-desc archived:false is:public stars:>5", type: REPOSITORY) {` +
+  public static SearchLatestRepositoriesQuery: string =
+    `{
+    search(first: ${
+      GithubQueries.DefaultPageSize
+    }, query: "topic:Ethereum good-first-issues:>1 sort:stars-desc archived:false is:public stars:>5", type: REPOSITORY) {` +
     GithubQueries.GenericRepositoryQuery;
 
-  public static SearchFeaturedRepositoriesQuery: string = `{
-    search(first: ${GithubQueries.DefaultPageSize}, query: "topic:Ethereum good-first-issues:>1 sort:updated-desc archived:false is:public stars:5..50", type: REPOSITORY) {` +
+  public static SearchFeaturedRepositoriesQuery: string =
+    `{
+    search(first: ${
+      GithubQueries.DefaultPageSize
+    }, query: "topic:Ethereum good-first-issues:>1 sort:updated-desc archived:false is:public stars:5..50", type: REPOSITORY) {` +
     GithubQueries.GenericRepositoryQuery;
 
   public static SearchNewIssueQuery: string = `{
@@ -138,5 +143,4 @@ export class GithubQueries {
       }
     }
   }`;
-
 }
