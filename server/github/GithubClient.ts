@@ -57,56 +57,68 @@ export class GithubClient {
 
   public async getNewIssues(): Promise<any> {
     const today = new Date();
-    const lastWeek = new Date(
+    const sinceLastDate = new Date(
       today.getFullYear(),
       today.getMonth(),
       today.getDate() - 7
     );
 
-    const repositories = await this.post(GithubQueries.SearchNewIssueQuery);
+    const goodFirst = await this.post(GithubQueries.SearchNewGoodFirstQuery);
+    const helpWanted = await this.post(GithubQueries.SearchNewHelpWantedQuery);
+    const repositories = goodFirst.concat(helpWanted);
+
     const filteredRepos = repositories.filter(
       (r: any) =>
         r.issues.totalCount > 0 &&
-        r.issues.nodes.some((i: any) => new Date(i.createdAt) > lastWeek)
+        r.issues.nodes.some((i: any) => new Date(i.createdAt) > sinceLastDate)
     );
 
     let totalIssues = 0;
     const filtered = filteredRepos
       .map((repository: any) => {
         const issues = repository.issues.nodes
-          .filter((i: any) => new Date(i.createdAt) > lastWeek)
+          .filter((i: any) => new Date(i.createdAt) > sinceLastDate)
           .map((issue: any) => {
             totalIssues++;
             return {
-              author: issue.author.login,
+              author: issue.author ? issue.author.login : "",
               name: issue.title,
               url: issue.url
             };
           });
 
         return {
+          description: repository.description,
+          homepageUrl: repository.homepageUrl,
           issueCount: issues.length,
           issues,
           name: repository.nameWithOwner,
+          primaryLanguage: repository.primaryLanguage,
           url: repository.url
         };
       })
-      .sort((a: any, b: any) => a.issueCount < b.issueCount);
+      .sort((a: any, b: any) => (a.name > b.name ? 1 : -1));
 
     console.log(`${totalIssues} new issues on ${filtered.length} repositories`);
     console.log("");
 
     for (const rep of filtered) {
-      console.log(`${rep.name} - ${rep.issueCount} issues`);
-      console.log(
-        rep.url + `/issues?q=is%3Aissue+is%3Aopen+label%3A"good+first+issue"`
-      );
+      console.log(`${rep.name} - ${rep.description}`);
+      console.log(`${rep.homepageUrl}`);
+      console.log("");
+      console.log(`${rep.issueCount} new issue(s)`);
+      console.log(`Primary language: #${rep.primaryLanguage.name}`);
+      console.log(rep.url + `/issues`);
+
+      console.log("");
 
       let count = 1;
       for (const iss of rep.issues) {
         console.log(`${count}. ${iss.name} - ${iss.url}`);
         count++;
       }
+      console.log("");
+      console.log("=====");
       console.log("");
     }
 
