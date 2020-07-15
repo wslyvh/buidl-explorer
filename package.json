@@ -28,7 +28,7 @@
     "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
-    "apollo-server-express": "^2.14.2",
+    "apollo-server-express": "^2.15.1",
     "axios": "^0.19.2",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
