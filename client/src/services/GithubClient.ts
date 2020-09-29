@@ -1,22 +1,20 @@
 import axios, { AxiosInstance } from "axios";
-import * as dotenv from "dotenv";
+import { ServerConfig } from "../config/server";
 import { GithubQueries } from "./Queries";
 import { ISearchArguments } from "./types";
-
-dotenv.config();
 
 export class GithubClient {
   private client: AxiosInstance;
 
   constructor() {
-    const githubToken = process.env.GITHUB_TOKEN;
+    const githubToken = ServerConfig.GITHUB_TOKEN;
 
     this.client = axios.create({
       baseURL: "https://api.github.com/",
       headers: {
-        Accept: "application/json",
-        Authorization: "Bearer " + githubToken,
-        "Content-Type": "application/json"
+        "Accept": "application/json",
+        "Authorization": "Bearer " + githubToken,
+        "Content-Type": "application/json",
       }
     });
   }

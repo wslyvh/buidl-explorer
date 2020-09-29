@@ -21,7 +21,7 @@ class FeaturedRepositoryList extends Component {
   }
 
   public callBackendAPI = async () => {
-    const response = await fetch("/api/repositories/featured");
+    const response = await fetch("/.netlify/functions/featured");
     const body = await response.json();
 
     if (response.status !== 200) {

@@ -20,7 +20,7 @@ class IssueList extends Component {
     }
 
     public callBackendAPI = async () => {
-        const response = await fetch("/api/issues");
+        const response = await fetch("/.netlify/functions/issues");
         const body = await response.json();
 
         if (response.status !== 200) {
@@ -51,14 +51,14 @@ class IssueList extends Component {
                         <List.Item key={item.title}>
                             <List.Item.Meta
                                 avatar={
-                                    <a href={item.repository.url} target="_blank">
+                                    <a href={item.repository.url} target="_blank" rel="noopener noreferrer">
                                         <Avatar size="large" src={item.repository.owner.avatarUrl}
                                             alt={item.repository.name} />
                                     </a>
                                 }
                                 title={
                                     <span>
-                                        <a href={item.url} target="_blank">{item.title}</a>
+                                        <a href={item.url} target="_blank" rel="noopener noreferrer">{item.title}</a>
                                     </span>
                                 }
                                 description={

@@ -1,10 +1,6 @@
 import { Col, Layout, Row } from "antd";
-import {
-  ApolloClient,
-  ApolloClientOptions,
-  HttpLink,
-  InMemoryCache,
-} from "apollo-boost";
+import { ApolloClient, InMemoryCache } from "apollo-boost";
+import { createHttpLink } from "apollo-link-http";
 import React, { Component } from "react";
 import { ApolloProvider } from "react-apollo";
 import AppFooter from "../components/AppFooter";
@@ -16,7 +12,7 @@ import "../App.css";
 const { Content, Footer, Header } = Layout;
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: new HttpLink(),
+  link: createHttpLink({ uri: "/.netlify/functions/graphql" }),
 });
 
 class Repositories extends Component {

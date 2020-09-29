@@ -1,8 +1,9 @@
 {
   "name": "buidl-explorer-client",
-  "version": "0.1.0",
-  "description": "Join the #BUIDL movement and contribute to open-source Ethereum projects",
+  "description": "Find and contribute to open-source Ethereum projects",
   "author": "wslyvh",
+  "version": "0.2.0",
+  "homepage": "https://ethissue.watch/",
   "license": "MIT",
   "keywords": [
     "ethereum"
@@ -14,39 +15,45 @@
   "bugs": {
     "url": "https://github.com/wslyvh/buidl-explorer/issues"
   },
-  "homepage": "https://github.com/wslyvh/buidl-explorer#readme",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "concurrently 'react-scripts start' 'netlify-lambda serve src/functions'",
+    "build": "react-scripts build && netlify-lambda build src/functions",
     "test": "react-scripts test --coverage --verbose --detectOpenHandles --forceExit",
-    "eject": "react-scripts eject",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "lint-fix": "tslint --fix -c tslint.json -p tsconfig.json"
   },
-  "proxy": "http://localhost:5000/",
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/dotenv": "^8.2.0",
     "antd": "^3.10.8",
     "apollo-boost": "^0.1.22",
+    "apollo-server-lambda": "^2.18.1",
+    "axios": "^0.20.0",
+    "dotenv": "^8.2.0",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
     "react": "^16.6.3",
     "react-apollo": "^2.3.1",
     "react-dom": "^16.6.3",
     "react-emoji-render": "^0.5.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.1"
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/aws-lambda": "^8.10.63",
     "@types/jest": "^23.3.9",
-    "@types/node": "^10.12.9",
+    "@types/node": "^10.17.35",
     "@types/react": "^16.7.6",
     "@types/react-dom": "^16.0.9",
     "@types/react-router-dom": "^4.3.1",
+    "concurrently": "^5.3.0",
+    "netlify-lambda": "^2.0.1",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.6"
+    "typescript": "^3.1.6",
+    "react-scripts": "2.1.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",

@@ -1,8 +1,8 @@
-import { Button, Divider, List, Tag } from "antd";
+import { Divider, List, Tag } from "antd";
 import gql from "graphql-tag";
 import React, { Component } from "react";
 import { SearchRepositoryQuery } from "../data/queries/RepositoryQuery";
-import { IRepository, ISearchRepositories } from "../types";
+import { ISearchRepositories } from "../types";
 import RepositoryCard from "./RepositoryCard";
 
 const languages = [
@@ -136,7 +136,7 @@ class RepositoryOverview extends Component<IProps, IState> {
   }
 
   public render() {
-    const { limit, searchResultData } = this.props;
+    const { limit } = this.props;
     const issueType =
       this.state && this.state.type ? this.state.type : "good-first-issues";
 
@@ -248,7 +248,7 @@ class RepositoryOverview extends Component<IProps, IState> {
                   }}
                   dataSource={repositories}
                   loadMore={<span>&nbsp;</span>}
-                  renderItem={(repo: IRepository) => (
+                  renderItem={(repo: any) => (
                     <List.Item>
                       <RepositoryCard key={repo.id} repository={repo} />
                     </List.Item>

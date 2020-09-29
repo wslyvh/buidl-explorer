@@ -20,7 +20,7 @@ const RepositoryCard: React.SFC<IRepositoryProps> = (props) => {
 
   return (
     <div className="repository-card" style={{ borderTop: "5px solid" + color }}>
-      <a href={props.repository.url} target="_blank">
+      <a href={props.repository.url} target="_blank" rel="noopener noreferrer">
         <img
           className="avatar"
           src={props.repository.owner.avatarUrl}
