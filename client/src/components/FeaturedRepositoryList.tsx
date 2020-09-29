@@ -4,6 +4,7 @@ import RepositoryCard from "./RepositoryCard";
 
 class FeaturedRepositoryList extends Component {
   public state = {
+    loading: true,
     repos: [],
   };
 
@@ -16,7 +17,9 @@ class FeaturedRepositoryList extends Component {
   public componentDidMount() {
 
     this.callBackendAPI()
-      .then((result) => this.setState({ repos: result }))
+      .then((result) => this.setState({
+        loading: false,
+        repos: result }))
       .catch((error) => console.log(error));
   }
 
@@ -46,7 +49,9 @@ class FeaturedRepositoryList extends Component {
 
           <List
             grid={{ gutter: 16, xs: 1, sm: 1, md: 2, lg: 2, xl: 4, xxl: 4 }}
-            dataSource={this.state.repos} renderItem={(repo: any) => (
+            loading={this.state.loading}
+            dataSource={this.state.repos}
+            renderItem={(repo: any) => (
               <List.Item>
                 <RepositoryCard key={repo.id} repository={repo} />
               </List.Item>

@@ -5,7 +5,7 @@ class AppHeader extends Component {
     return (
       <div>
         <h1>
-          <a href="/">#BUIDL Explorer</a>
+          <a href="/">BUIDL Explorer</a>
         </h1>
         <p>
           Starting with open-source projects can be freighting, especially in a fast moving space as blockchain. <br />

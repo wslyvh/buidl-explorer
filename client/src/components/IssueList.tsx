@@ -3,6 +3,7 @@ import React, { Component } from "react";
 
 class IssueList extends Component {
     public state = {
+        loading: true,
         issues: [],
     };
 
@@ -15,7 +16,9 @@ class IssueList extends Component {
     public componentDidMount() {
 
         this.callBackendAPI()
-            .then((result) => this.setState({ issues: result }))
+            .then((result) => this.setState({
+                loading: false,
+                issues: result }))
             .catch((error) => console.log(error));
     }
 
@@ -46,6 +49,7 @@ class IssueList extends Component {
                     size="small"
                     itemLayout="horizontal"
                     pagination={{ pageSize: 10 }}
+                    loading={this.state.loading}
                     dataSource={this.state.issues}
                     renderItem={(item: any) => (
                         <List.Item key={item.title}>
