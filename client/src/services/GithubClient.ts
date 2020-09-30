@@ -15,7 +15,7 @@ export class GithubClient {
         "Accept": "application/json",
         "Authorization": "Bearer " + githubToken,
         "Content-Type": "application/json",
-      }
+      },
     });
   }
 
@@ -35,19 +35,19 @@ export class GithubClient {
 
   public async getLatestRepositories(): Promise<any> {
     const repositories = await this.post(
-      GithubQueries.SearchLatestRepositoriesQuery
+      GithubQueries.SearchLatestRepositoriesQuery,
     );
     return repositories.sort(
-      (a: any, b: any) => b.stargazers.totalCount - a.stargazers.totalCount
+      (a: any, b: any) => b.stargazers.totalCount - a.stargazers.totalCount,
     );
   }
 
   public async getFeaturedRepositories(): Promise<any> {
     const repositories = await this.post(
-      GithubQueries.SearchFeaturedRepositoriesQuery
+      GithubQueries.SearchFeaturedRepositoriesQuery,
     );
     return repositories.sort(
-      (a: any, b: any) => b.stargazers.totalCount - a.stargazers.totalCount
+      (a: any, b: any) => b.stargazers.totalCount - a.stargazers.totalCount,
     );
   }
 
@@ -56,7 +56,7 @@ export class GithubClient {
     const sinceLastDate = new Date(
       today.getFullYear(),
       today.getMonth(),
-      today.getDate() - 30
+      today.getDate() - 30,
     );
 
     const goodFirst = await this.getRecursive("good-first");
@@ -66,7 +66,7 @@ export class GithubClient {
     const filteredRepos = repositories.filter(
       (r: any) =>
         r.issues.totalCount > 0 &&
-        r.issues.nodes.some((i: any) => new Date(i.createdAt) > sinceLastDate)
+        r.issues.nodes.some((i: any) => new Date(i.createdAt) > sinceLastDate),
     );
 
     let totalIssues = 0;
@@ -79,7 +79,7 @@ export class GithubClient {
             return {
               author: issue.author ? issue.author.login : "",
               name: issue.title,
-              url: issue.url
+              url: issue.url,
             };
           });
 
@@ -98,7 +98,7 @@ export class GithubClient {
           topics,
           name: repository.nameWithOwner,
           primaryLanguage: repository.primaryLanguage,
-          url: repository.url
+          url: repository.url,
         };
       })
       .sort((a: any, b: any) => (a.name > b.name ? 1 : -1));
@@ -146,7 +146,7 @@ export class GithubClient {
     const repositoryIssues = repositories.map((repository: any) => {
       return repository.issues.nodes.map((issue: any) => {
         return {
-          ...issue
+          ...issue,
         };
       });
     });
@@ -159,7 +159,7 @@ export class GithubClient {
     }
 
     return issues.sort(
-      (a: any, b: any) => +new Date(b.updatedAt) - +new Date(a.updatedAt)
+      (a: any, b: any) => +new Date(b.updatedAt) - +new Date(a.updatedAt),
     );
   }
 
@@ -177,7 +177,7 @@ export class GithubClient {
           search(last: 100, after:"${response.data.data.search.pageInfo.endCursor}" query: "topic:Ethereum ${type}-issues:>=1 archived:false is:public stars:>5", type: REPOSITORY) {` +
         GithubQueries.SearchNewIssueQuery;
       const nextResponse = await this.client.post("graphql", {
-        query: nextQuery
+        query: nextQuery,
       });
       nodes = nodes.concat(nextResponse.data.data.search.nodes);
     }
