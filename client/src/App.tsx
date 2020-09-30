@@ -6,6 +6,14 @@ import Repositories from "./pages/Repositories";
 
 class App extends Component {
 
+  constructor(props: any, context: any) {
+    super(props, context);
+    if (window && window.location && window.location.host && window.location.host.includes("herokuapp")) {
+      console.log("REDIRECT", window.location.host);
+      window.location.assign("https://ethissue.watch/");
+    }
+  }
+
   public render() {
     return (
         <Switch>
