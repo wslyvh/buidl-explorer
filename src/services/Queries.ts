@@ -118,7 +118,7 @@ export class GithubQueries {
     GithubQueries.SearchNewIssueQuery;
 
   public static SearchIssueQuery: string = `{
-    search(first: 25, query: "topic:Ethereum good-first-issues:>=1 archived:false is:public stars:>5", type: REPOSITORY) {
+    search(first: 50, query: "topic:Ethereum good-first-issues:>=1 archived:false is:public stars:>5", type: REPOSITORY) {
       repositoryCount
       nodes {
         ... on Repository {
