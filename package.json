@@ -27,7 +27,7 @@
     "@types/dotenv": "^8.2.0",
     "antd": "^3.10.8",
     "apollo-boost": "^0.1.22",
-    "apollo-server-lambda": "^2.18.1",
+    "apollo-server-lambda": "^2.18.2",
     "axios": "^0.20.0",
     "dotenv": "^8.2.0",
     "graphql": "^14.0.2",
